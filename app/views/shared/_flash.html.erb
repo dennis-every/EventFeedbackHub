@@ -1,6 +1,6 @@
 <%= turbo_frame_tag "flash" do %>
   <% if flash.any? %>
-    <div class="my-5">
+    <div class="position-fixed top-0 start-50 translate-middle-x mt-3 z-1050" style="min-width: 60vw;" data-controller="flash">
       <% flash.each do |type, message| %>
         <div class="alert alert-<%= type == 'alert' ? 'danger' : 'success' %> alert-dismissible fade show" role="alert">
           <%= message %>
