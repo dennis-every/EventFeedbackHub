@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_04_033722) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_04_034911) do
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.integer "event_id", null: false
+    t.text "comment"
+    t.integer "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_feedbacks_on_event_id"
+  end
+
+  add_foreign_key "feedbacks", "events"
 end
