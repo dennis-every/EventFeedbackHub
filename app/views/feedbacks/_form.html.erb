@@ -12,14 +12,7 @@
           </div>
         </div>
 
-        <div class="row mb-3 align-items-center">
-          <div class="col-sm-3">
-            <%= f.label :rating, class: "form-label" %>
-          </div>
-          <div class="col-sm-9">
-            <%= f.select :rating, options_for_select(1..5), {prompt: 'Select Rating'}, { class: "form-select" } %>
-          </div>
-        </div>
+        <%= render 'star_rating', f: f %>
 
         <div class="row mb-3 align-items-center">
           <div class="col-sm-3">
