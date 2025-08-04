@@ -6,19 +6,29 @@ class FeedbacksController < ApplicationController
 
     @feedbacks = feedbacks.paginate(page: params[:page], per_page: 2)
     @events = Event.order(name: :asc)
+    @feedback = Feedback.new
   end
 
   def create
     @events = Event.order(name: :asc)
-
     @feedback = Feedback.new(feedback_params)
     if @feedback.save
+      flash.now[:notice] = "Thank you for your feedback!"
+      @feedback = Feedback.new
       respond_to do |format|
         format.turbo_stream
-        format.html { redirect_to root_path }
       end
     else
-      render :index
+      flash.now[:alert] = @feedback.errors.full_messages.to_sentence
+      @feedbacks = Feedback.order(created_at: :desc).paginate(page: params[:page], per_page: 2)
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.replace("flash", partial: "shared/flash"),
+            turbo_stream.replace("feedback_form", partial: "feedbacks/form", locals: { feedback: @feedback, events: @events })
+          ]
+        end
+      end
     end
   end
 

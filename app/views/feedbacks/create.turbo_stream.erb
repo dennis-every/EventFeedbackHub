@@ -1,5 +1,9 @@
 <%= turbo_stream.remove "no-feedback" %>
 
+<%= turbo_stream.replace "flash" do %>
+  <%= render partial: "shared/flash" %>
+<% end %>
+
 <%= turbo_stream.update "feedback_form" do %>
-  <%= render partial: "form", locals: { feedback: Feedback.new, events: @events } %>
+  <%= render partial: "form", locals: { feedback: @feedback, events: @events } %>
 <% end %>

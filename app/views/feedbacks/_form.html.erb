@@ -1,31 +1,40 @@
-<div class="card my-4">
-  <div class="card-body">
-    <%= form_with model: Feedback.new, url: feedbacks_path, local: false do |f| %>
+<%= turbo_frame_tag "feedback_form" do %>
+  <div class="card my-4">
+    <div class="card-body">
+      <%= form_with model: feedback, url: feedbacks_path, local: false do |f| %>
+        
+        <div class="row mb-3 align-items-center">
+          <div class="col-3">
+            <%= f.label :event_id, "Event", class: "form-label" %>
+          </div>
+          <div class="col-9">
+            <%= f.collection_select :event_id, events, :id, :name, {prompt: 'Select Event'}, { class: "form-select" } %>
+          </div>
+        </div>
+
+        <div class="row mb-3 align-items-center">
+          <div class="col-sm-3">
+            <%= f.label :rating, class: "form-label" %>
+          </div>
+          <div class="col-sm-9">
+            <%= f.select :rating, options_for_select(1..5), {prompt: 'Select Rating'}, { class: "form-select" } %>
+          </div>
+        </div>
+
+        <div class="row mb-3 align-items-center">
+          <div class="col-sm-3">
+            <%= f.label :comment, 'Feedback', class: "form-label" %>
+          </div>
+          <div class="col-sm-9">
+            <%= f.text_area :comment, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-end">
+          <%= f.submit "Submit Feedback", class: "btn btn-primary" %>
+        </div>
       
-      <div class="row mb-3 align-items-center">
-        <div class="col-3">
-          <%= f.label :event_id, "Event", class: "form-label" %>
-        </div>
-        <div class="col-9">
-          <%= f.collection_select :event_id, @events, :id, :name, {}, { class: "form-select" } %>
-        </div>
-      </div>
-
-      <%= render 'star_rating', f: f %>
-
-      <div class="row mb-3 align-items-center">
-        <div class="col-sm-3">
-          <%= f.label :comment, 'Feedback', class: "form-label" %>
-        </div>
-        <div class="col-sm-9">
-          <%= f.text_area :comment, class: "form-control" %>
-        </div>
-      </div>
-
-      <div class="d-flex justify-content-end">
-        <%= f.submit "Submit Feedback", class: "btn btn-primary" %>
-      </div>
-    
-    <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>
