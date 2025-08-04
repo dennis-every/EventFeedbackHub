@@ -23,6 +23,8 @@ A web application named "Event Feedback Hub", where users can share their feedba
     * git clone git@github.com:dennis-every/EventFeedbackHub.git
     * cd EventFeedbackHub
     * bundle install
+    * bin/rails db:migrate
+    * bin/rails db:seed
     * bin/dev
 
 * In your web browser:
