@@ -1,24 +1,29 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
+A web application named "Event Feedback Hub", where users can share their feedback on events they attended (workshops, webinars, conferences), and view others' feedback in real-time.
 
-Things you may want to cover:
+**Features**
 
-* Ruby version
+* A submission form. Users can select an event from a dropdown menu, and submit their feedback along with a 1-5 starts rating.
 
-* System dependencies
+* A feedback stream. This is a real-time list of feedback shared by users about available events.
+	* For each entry has the event name, the user's feedback text, and the rating given.
+	* Has pagination and filtering on event name and rating.
 
-* Configuration
+## Built with
+* Ruby 3.4.5
+* Rails 8.0.2
 
-* Database creation
+## How to run locally
 
-* Database initialization
+* You must have Ruby 3.4.5 installed
 
-* How to run the test suite
+* In your terminal:
+    * git clone git@github.com:dennis-every/EventFeedbackHub.git
+    * cd EventFeedbackHub
+    * bundle install
+    * bin/dev
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* In your web browser:
+    * Visit localhost:3000
