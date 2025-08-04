@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "feedbacks/index.html.erb", type: :view do
   it "displays the page title" do
     assign(:events, [ Event.new(id: 1, name: "Sample Event") ])
+    assign(:feedback, Feedback.new)
     feedbacks = WillPaginate::Collection.create(1, 3, 0) do |pager|
       pager.replace([])
     end
