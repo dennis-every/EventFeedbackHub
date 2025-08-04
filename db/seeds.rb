@@ -7,3 +7,15 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+event_names = [
+  "Rails Conference",
+  "Bootcamp",
+  "Meetup"
+]
+
+event_names.each do |name|
+  Event.find_or_create_by!(name: name)
+end
+
+puts "Seeded #{Event.count} unique events."

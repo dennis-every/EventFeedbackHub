@@ -1,0 +1,30 @@
+<%= turbo_stream_from "feedbacks" %>
+
+<div class="mt-5">
+  <div class="row">
+    <div class="col-6">
+      <h2>Feedback Stream</h2>
+    </div>
+    <div class="col-6 ">
+      <div class='text-end'>
+        <%= render 'pagination' %>  
+      </div>  
+    </div>
+  </div>
+
+  <div id="feedback-container">
+    <%= render 'filter' %>
+    
+    <div id="feedbacks">
+      <% if @feedbacks.empty? %>
+        <div id='no-feedback' class='d-flex justify-content-center align-items-center' style="height: 200px;">
+          <p class="text-muted">No feedback available.</p>
+        </div>  
+      <% else %>
+        <%= render partial: "feedback", collection: @feedbacks, as: :feedback %>
+      <% end %>  
+    </div>
+
+    <%= render 'pagination' %>
+  </div>
+</div>

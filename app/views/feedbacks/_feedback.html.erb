@@ -1,0 +1,23 @@
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="feedback-entry">
+      <div class='row'>
+        <div class='col-sm-6'>
+          <strong>Event: <%= feedback.event&.name %></strong>
+        </div>
+        <div class='col-sm-6'>
+          <p class='text-end'>
+            <% 1.upto(5) do |i| %>
+              <% if i <= feedback.rating.to_i %>
+                <span style="color: #ffc107;">&#9733;</span>
+              <% else %>
+                <span style="color: #ccc;">&#9733;</span>
+              <% end %>
+            <% end %>
+          </p>
+        </div>
+      </div>
+      <p><%= feedback.comment %></p>
+    </div>
+  </div>  
+</div>
