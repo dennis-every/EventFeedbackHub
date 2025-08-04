@@ -1,6 +1,10 @@
 class FeedbacksController < ApplicationController
   def index
-    @feedbacks = Feedback.includes(:event).order(created_at: :desc)
+    feedbacks = Feedback.includes(:event).order(created_at: :desc)
+    feedbacks = feedbacks.where(event_id: params[:event_id]) if params[:event_id].present?
+    feedbacks = feedbacks.where(rating: params[:rating]) if params[:rating].present?
+
+    @feedbacks = feedbacks.paginate(page: params[:page], per_page: 2)
     @events = Event.order(name: :asc)
   end
 

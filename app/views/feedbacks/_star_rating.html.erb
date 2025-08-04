@@ -1,0 +1,13 @@
+<div class="row mb-3 align-items-center">
+  <div class="col-3">
+    <%= f.label :rating, class: "form-label" %>
+  </div>
+  <div class="col-9">
+    <div class="star-rating">
+      <% (1..5).reverse_each do |star| %>
+        <%= f.radio_button :rating, star, id: "rating_#{star}", class: "star-input" %>
+        <label for="rating_<%= star %>" class="star">&#9733;</label>
+      <% end %>
+    </div>
+  </div>
+</div>

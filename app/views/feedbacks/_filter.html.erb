@@ -1,0 +1,16 @@
+<div class="my-3">
+  <%= form_with url: feedbacks_path, method: :get, local: true do %>
+    <div class="row g-3 align-items-end">
+      <div class="col-sm-4">
+        <%= select_tag :event_id, options_from_collection_for_select(@events, :id, :name, params[:event_id]), prompt: "All Events", class: 'form-select' %>
+      </div>
+      <div class="col-sm-4">
+        <%= select_tag :rating, options_for_select((1..5).to_a, params[:rating]), prompt: "All Ratings", class: 'form-select' %>
+      </div>
+      <div class="col-sm-4 d-flex gap-2">
+        <%= submit_tag "Filter", class: 'btn btn-primary' %>
+        <%= link_to "Clear", feedbacks_path, class: 'btn btn-secondary' %>
+      </div>
+    </div>
+  <% end %>
+</div>
