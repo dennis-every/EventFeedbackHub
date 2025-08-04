@@ -1,7 +1,5 @@
 <%= turbo_stream.remove "no-feedback" %>
 
-<%= turbo_stream.prepend "feedbacks", partial: "feedback", object: @feedback %>
-
 <%= turbo_stream.update "feedback_form" do %>
   <%= render partial: "form", locals: { feedback: Feedback.new, events: @events } %>
 <% end %>
