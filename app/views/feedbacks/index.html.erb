@@ -1,1 +1,9 @@
-<h1>Event Feedback Hub</h1>
+<div class="my-5">
+  <h1>Event Feedback Hub</h1>
+
+  <%= turbo_frame_tag "feedback_form" do %>
+    <%= render 'form' %>  
+  <% end %>
+
+  <%= render 'feedback_stream' %>
+</div>

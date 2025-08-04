@@ -1,0 +1,11 @@
+<div id="feedback-container">
+  <div id="feedbacks">
+    <% if @feedbacks.empty? %>
+    <div id='no-feedback' class='d-flex justify-content-center align-items-center' style="height: 200px;">
+      <p class="text-muted">No feedback available.</p>
+    </div>  
+    <% else %>
+      <%= render partial: "feedback", collection: @feedbacks, as: :feedback %>
+    <% end %>  
+  </div>
+</div>
